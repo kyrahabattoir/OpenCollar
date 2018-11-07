@@ -45,26 +45,8 @@ default {
         llSay(g_iMychannel, g_sResponse);
         llSetTimerEvent(2.0);
     }
-    attach(key kAttached) {
-        if (kAttached == NULL_KEY)
-            llSay(g_iMychannel, g_sWearerID+"handle detached");
-    }
     changed(integer change) {
         if (change & CHANGED_INVENTORY) PermsCheck();
-        if (change & CHANGED_TELEPORT) {
-            llSay(g_iMychannel, g_sResponse);
-            llSetTimerEvent(2.0);
-        }
-    }
-    timer() {
-        if (g_i) {
-            g_i = FALSE;
-            llSetTimerEvent(0.0);
-            llSay(g_iMychannel, g_sResponse);
-        } else {
-            g_i = TRUE;
-            llSay(g_iMychannel, g_sResponse);
-        }
     }
     on_rez(integer param) {
         llResetScript();
